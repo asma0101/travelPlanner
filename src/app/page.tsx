@@ -1,8 +1,11 @@
+import Home from "./home/page"
 
-export default function Home() {
+const MainComponent = () => {
   return (
-    <main>
-      <p className="text-lg">Hello from NextJS!</p>
-    </main>
-  )
+    <>
+      <Home></Home>
+    </>
+  );
 }
+
+export default MainComponent;

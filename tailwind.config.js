@@ -7,7 +7,8 @@ module.exports = {
     extend: {},
     fontSize: {
       lg:'30px'
-    }
+    },
+   
   },
   plugins: [],
 }
