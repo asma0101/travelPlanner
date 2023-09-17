@@ -1,9 +1,9 @@
-import Home from "./home/page"
+import Dashboard from "./dashboard/[_userId]/page";
 
 const MainComponent = () => {
   return (
     <>
-      <Home></Home>
+      <Dashboard></Dashboard>
     </>
   );
 }

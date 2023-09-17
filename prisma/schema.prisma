@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs https//pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model Users {
+  id 			Int      @id @default(autoincrement())
+  email 		String   @unique
+  password 		String
+  userPlans 	UserPlans[]
+  reviews		Reviews[]
+}
+
+model Destinations {
+  id          Int      @id @default(autoincrement())
+  name        String
+  region      String
+  plans       Plans[]
+}
+
+model Cities {
+  id          	Int      @id @default(autoincrement())
+  name        	String
+  pickPoints 	PickPoints[]
+}
+model PickPoints {
+  id          Int      @id @default(autoincrement())
+  pointName   String
+  cityId      Int
+  city        Cities @relation(fields: [cityId], references: [id])
+  plans       Plans[]
+}
+
+
+
+model Plans {
+  id            Int      @id @default(autoincrement())
+  destination   Destinations @relation(fields: [destinationId], references: [id])
+  destinationId Int
+  pickPoint     PickPoints @relation(fields: [pickPointId], references: [id])
+  pickPointId   Int
+  startDate     DateTime
+  endDate       DateTime
+  isCustomTrip  Boolean
+  services      String
+  userPlans		UserPlans[]
+}
+
+model Services {
+  id 			Int      @id @default(autoincrement())
+  serviceName 	String
+  charges 		Int
+  description   String
+  img			String
+  Link			String
+}
+
+model UserPlans {
+  id 			Int      @id @default(autoincrement())
+  user 			Users @relation(fields: [userId], references: [id])
+  userId 		Int
+  plan 			Plans @relation(fields: [planId], references: [id])
+  planId 		Int
+}
+
+model Reviews {
+  id 			Int      @id @default(autoincrement())
+  user 			Users @relation(fields: [userId], references: [id])
+  userId 		Int
+  comments 		String
+  rating 		Int
+}

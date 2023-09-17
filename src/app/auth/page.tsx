@@ -3,11 +3,25 @@ import { useRouter } from 'next/navigation';
 
 const Login = () => {
 
-	const router = useRouter();	
-	const SignIn = () => {
-		alert("You're signed in")
+	const router = useRouter();
+	const isLoggedIn = localStorage.getItem('loggedIn') || 'false';
+	if (isLoggedIn !== 'false') {
+			router.push('/dashboard/123');
 	}
+	const SignIn = (e: any) => {
+		e.preventDefault(); // Prevent default form submission behavior
 
+		const emailInput = document.getElementById('email');
+		const passwordInput = document.getElementById('password');
+
+		if (emailInput != null && passwordInput != null) {
+			router.push('/dashboard/123');
+			localStorage.setItem('loggedIn', 'true');
+		} else {
+			// Form is invalid, show error messages or handle as needed
+			alert('Please fill out all fields correctly.');
+		}
+	}
 	return (
 		<>
 			<div className="min-h-screen bg-gray-200  flex items-center justify-center">
@@ -40,9 +54,7 @@ const Login = () => {
 					</div>
 					<button
 						className="w-full py-2 px-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700"
-							type="submit" onClick={() => {
-								router.push('/dashboard/123'); localStorage.setItem('loggedIn', 'true');
-						}}
+							type="button" onClick={SignIn}
 					>
 						Login
 					</button>

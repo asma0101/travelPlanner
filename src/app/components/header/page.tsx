@@ -1,9 +1,15 @@
 "use client"
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
 
-const Header = (props:any) => {
+const Header = () => {
 	
 	const router = useRouter();
+	const [loggedIn, setIsLoggedIn] = useState(false);
+	useEffect(() => {
+		const isLoggedIn = localStorage.getItem('loggedIn') 
+		setIsLoggedIn(isLoggedIn ? JSON.parse(isLoggedIn) : false);
+	});
 	
     return (
         <>
@@ -17,7 +23,7 @@ const Header = (props:any) => {
 				<div>
 					<button className="mr-2 px-4 py-2 bg-transparent border border-white text-white rounded hover:bg-white hover:text-gray-800">Customize Your Trip</button>
 							{
-								!props.loggedIn ? 
+								!loggedIn ? 
 									<>
 										< button className="mr-2 px-4 py-2 bg-blue-500 text-white rounded"
 										onClick={ () => {router.push(`/auth?view=login`)} }>Login</button>
