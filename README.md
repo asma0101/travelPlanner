@@ -16,3 +16,7 @@ Login/Sign up isn't functional in this module as not required
 Note: While testing if prisma connection fails, please let me know so I can restat it on supabase.
 
 http://localhost:3000/home
+
+http://localhost:3000/home/myTrips
+
+http://localhost:3000/home/myTrips/viewTrip/4
