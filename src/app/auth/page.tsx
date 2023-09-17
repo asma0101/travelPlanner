@@ -1,24 +1,30 @@
 "use client"
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { setLoader, setLoggedInUser } from '../redux/Actions/userActions';
 
 const Login = () => {
 
 	const router = useRouter();
 	const isLoggedIn = localStorage.getItem('loggedIn') || 'false';
+	let dispatch = useDispatch();
 	if (isLoggedIn !== 'false') {
-			router.push('/dashboard/123');
+			router.push('/home');
 	}
 	const SignIn = (e: any) => {
-		e.preventDefault(); // Prevent default form submission behavior
-
+		e.preventDefault(); 
 		const emailInput = document.getElementById('email');
 		const passwordInput = document.getElementById('password');
 
 		if (emailInput != null && passwordInput != null) {
-			router.push('/dashboard/123');
-			localStorage.setItem('loggedIn', 'true');
+			dispatch(setLoggedInUser(true));
+			dispatch(setLoader(true));
+			setTimeout(() => {
+				router.push('/home');
+				localStorage.setItem('loggedIn', 'true');
+				
+			}, 1000);
 		} else {
-			// Form is invalid, show error messages or handle as needed
 			alert('Please fill out all fields correctly.');
 		}
 	}

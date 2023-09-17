@@ -12,7 +12,6 @@ const Home = () => {
   return (
     <>
     <div className="min-h-screen ">
-      <Header ></Header>
         <div className="mt-16">
 			<div className="bg-white py-16 text-center">
 				<Banner></Banner>
@@ -26,7 +25,6 @@ const Home = () => {
 			</div>
         </div>
       </div>
-      <Footer></Footer>      
       </>
   );
 };

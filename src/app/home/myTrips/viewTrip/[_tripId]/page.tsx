@@ -7,18 +7,15 @@ import Head from 'next/head';
 const TripDetails = (props:any) => {
 	
 	const trip = {
-    title: 'Amazing Trip to Mountains',
-    image: '/mountain_trip.jpg',
-    description:
-			'Experience the breathtaking beauty of the mountains. Join us for an adventure of a lifetime! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt exercitationem consequuntur, ut velit maiores voluptates debitis. Eaque ad saepe rerum eius assumenda ut a autem, consequatur odio error voluptas omnis!',
-    services: ['Accommodation', 'Guided Tours', 'Meals'],
-    startDate: '2023-10-01',
-    endDate: '2023-10-07',
-  };
+		title: 'Amazing Trip to Mountains',
+		image: '/mountain_trip.jpg',
+		description:
+				'Experience the breathtaking beauty of the mountains. Join us for an adventure of a lifetime! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt exercitationem consequuntur, ut velit maiores voluptates debitis. Eaque ad saepe rerum eius assumenda ut a autem, consequatur odio error voluptas omnis!',
+		services: ['Accommodation', 'Guided Tours', 'Meals'],
+		startDate: '2023-10-01',
+		endDate: '2023-10-07',
+	};
 
-	// const toggleModal = () => {
-	// 	props.toggleModal();
-	// }
     return (
 		<>
 			<div className="bg-gray-100 h-full">
@@ -67,7 +64,7 @@ const TripDetails = (props:any) => {
 					</div>
 				</div>
 				<div className="justify-center flex">
-					<Link href='/dashboard/myTrips' className=" py-2 px-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700">Back to List</Link>
+					<Link href='/home/myTrips' className=" py-2 px-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700">Back to List</Link>
 				</div>
 			</div>
         </>
@@ -75,18 +72,3 @@ const TripDetails = (props:any) => {
 }
 
 export default TripDetails;
-export async function getStaticProps() {
-  const trip = {
-    title: 'Amazing Trip to Mountains',
-    image: '/mountain_trip.jpg',
-    description:
-      'Experience the breathtaking beauty of the mountains. Join us for an adventure of a lifetime!',
-    services: ['Accommodation', 'Guided Tours', 'Meals'],
-    startDate: '2023-10-01',
-    endDate: '2023-10-07',
-  };
-
-  return {
-    props: { trip },
-  };
-}
