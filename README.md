@@ -1,8 +1,11 @@
 This assignment covers following:
 
 ORM (Prisma) setup
+
 Database (Supabase) setup
+
 Redux setup for state management
+
 Fetch & Dispaly Dynamic data (Services section and upcoming lists are dynamic)
 
 <img src="public/Services.PNG" alt="Alt text" title="Optional title">
