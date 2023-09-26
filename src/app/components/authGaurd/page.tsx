@@ -1,3 +1,4 @@
+"use client"
 import { setErrorAlert } from "@/app/redux/Actions/userActions";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
