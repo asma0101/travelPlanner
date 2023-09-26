@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import authGuard from "@/app/common/authGuard";
+import authGuard from "../../components/authGaurd/page";
 
 
 const MyTrips = () => {

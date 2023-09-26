@@ -1,5 +1,5 @@
 "use client"
-import authGuard from "@/app/common/authGuard";
+import authGuard from "../../components/authGaurd/page";
 import { PickPoint, Trip, User } from "@/app/common/interfaces";
 import { getTotalDays } from "@/app/common/utilitiesService";
 import ErrorAlert from "@/app/components/alert/page";

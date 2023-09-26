@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setErrorAlert } from '../redux/Actions/userActions';
+import { setErrorAlert } from '../../redux/Actions/userActions';
 
 const authGuard = (WrappedComponent: any) => {
   return (props:any) => {
@@ -24,5 +24,4 @@ const authGuard = (WrappedComponent: any) => {
     return <WrappedComponent {...props} />;
   };
 };
-authGuard['displayName'] = 'authGaurd';
 export default authGuard;
