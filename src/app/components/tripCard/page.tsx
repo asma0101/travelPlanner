@@ -1,6 +1,5 @@
 "use client";
 
-import TripDetails from '@/app/dashboard/myTrips/viewTrip/[_tripId]/page';
 import { isUserLoggedIn } from '@/app/common/utilitiesService';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -21,7 +20,7 @@ const Trip = (props: any) => {
         setLoggedIn(isUserLoggedIn());
     }, []);
     const openTripDetails = () => {
-        router.push(`/dashboard/myTrips/viewTrip/${props.id}`)
+        router.push(`/home/myTrips/viewTrip/${props.id}`)
     }
     return (
         <>
