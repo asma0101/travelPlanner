@@ -1,3 +1,4 @@
+"use client"
 import { getReviews } from "@/app/shared/services";
 import { useEffect, useState } from "react";
 import Carousel from "../carousal/page";
