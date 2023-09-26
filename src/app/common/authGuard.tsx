@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setErrorAlert } from '../redux/Actions/userActions';
 
-export default function authGuard  (WrappedComponent: any) {
+const authGuard = (WrappedComponent: any) => {
   return (props:any) => {
       const router = useRouter();
       const dispatch = useDispatch();
@@ -24,4 +24,5 @@ export default function authGuard  (WrappedComponent: any) {
     return <WrappedComponent {...props} />;
   };
 };
-
+authGuard['displayName'] = 'authGaurd';
+export default authGuard;
