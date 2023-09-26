@@ -86,7 +86,7 @@ const TripDetails =  (props: any) => {
 
 							<div className="max-w-4xl mx-auto bg-white p-8 rounded shadow-lg">
 								<h1 className="text-3xl font-bold mb-4">
-									Join us on an adventurous trip to "{`${tripDetails.destination.name}, ${tripDetails.destination.region}`}"
+									Join us on an adventurous trip to {`"${tripDetails.destination.name}, ${tripDetails.destination.region}"`}
 						</h1>
 								<div className=" ">
 									<p className="text-xl font-semibold">
@@ -112,7 +112,7 @@ const TripDetails =  (props: any) => {
 									<div>
 										<p className="text-xl font-semibold mb-2">Trip Details:</p>
 										<p>
-											Let's get captivated by the stunning beauty of Mountains ! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia sapiente eum sed animi laudantium. Repellendus, harum. Ad fugiat voluptatem, repudiandae, ut a, officiis magni sed delectus blanditiis dolor voluptas nemo.
+											Let&apos;s get captivated by the stunning beauty of Mountains ! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia sapiente eum sed animi laudantium. Repellendus, harum. Ad fugiat voluptatem, repudiandae, ut a, officiis magni sed delectus blanditiis dolor voluptas nemo.
 								</p>
 									</div>
 								</div>

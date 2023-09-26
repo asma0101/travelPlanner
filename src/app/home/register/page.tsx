@@ -165,7 +165,7 @@ const RegisterTrip = () => {
 						<>
 					<div className="w-1/2 p-6  h-screen flex justify-center items-center margin-top-10">
 					<div className="w-500 bg-white p-6">
-						<h2 className="textXLg font-bold mb-4">Let's Explore Together</h2>
+						<h2 className="textXLg font-bold mb-4">Let&apos;s Explore Together</h2>
 						<div className="mb-4">
 							<p className="font-bold text-blue-600">Destination:</p>
 							<p>{selectedTrip.destination.name}, { selectedTrip.destination.region}</p>
