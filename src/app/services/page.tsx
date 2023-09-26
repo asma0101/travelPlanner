@@ -34,7 +34,7 @@ const Services =  () => {
 			}
 		}
 		fetchData();
-	},[])
+	},[dispatch])
     return (
 		<>
 			

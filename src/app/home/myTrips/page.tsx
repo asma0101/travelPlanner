@@ -36,7 +36,7 @@ const MyTrips = () => {
             }
         };
         fetchUserTrips();
-    }, []);
+    }, [dispatch]);
     return (
         <>
             <div className="max-w-screen-lg mx-auto mt-24 overflow-y-auto">

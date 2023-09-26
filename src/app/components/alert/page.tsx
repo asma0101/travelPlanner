@@ -9,7 +9,7 @@ const ErrorAlert = () => {
 	const [dismissed, setDismissed] = useState(!alertData.displayAlert);
 	useEffect(() => {
 		setDismissed(!alertData.displayAlert);
-	})
+	}, [alertData.displayAlert]);
   const dismissAlert = () => {
 	  setDismissed(true);
 	  dispatch(setErrorAlert(false, ''));

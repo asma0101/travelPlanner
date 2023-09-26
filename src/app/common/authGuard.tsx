@@ -19,7 +19,7 @@ const authGuard = (WrappedComponent: any) => {
             dispatch(setErrorAlert(true, 'Please login to proceed!'));
             router.push('/auth?view=login'); 
         }
-    }, []);
+    }, [router, dispatch]);
 
     return <WrappedComponent {...props} />;
   };

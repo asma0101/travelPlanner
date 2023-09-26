@@ -29,8 +29,8 @@ const Carousel = (props:any) => {
                 <div className="max-w-screen-xl mx-auto mt-6">
                         <Slider {...settings}>
                             {
-                                props.data.map((review:any) => {
-                                    return <div className="max-w-xs mx-2 mb-4 bg-white rounded shadow-md border border-gray-300">
+                                props.data.map((review:any, index:number) => {
+                                    return <div key={ index } className="max-w-xs mx-2 mb-4 bg-white rounded shadow-md border border-gray-300">
                                         <div className="p-4 text-center">
                                             <img
                                                 src="/userIcon.png"

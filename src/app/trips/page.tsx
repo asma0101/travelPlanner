@@ -30,7 +30,7 @@ const Trips =  () => {
 			}
 		}
 		fetchData();
-	},[])
+	},[dispatch])
     return (
 		<>
             <div className="w-1/2 p-4 overflow-y-auto">

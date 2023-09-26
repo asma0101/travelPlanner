@@ -1,9 +1,7 @@
 "use client"
 import { isUserLoggedIn } from '@/app/common/utilitiesService';
-import { setLoggedInUser } from '@/app/redux/Actions/userActions';
 import { useRouter, useSearchParams  } from 'next/navigation';
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../common/utilitiesService';
 const Header = () => {
 	const [isLoginView, setLoginView] = useState(true);
@@ -13,7 +11,7 @@ const Header = () => {
 	let loggedIn = isUserLoggedIn();
 	useEffect(() => {
 		setLoginView((view && view === 'login') || false);
-	},[])
+	},[view])
 	
 	
 	const handleLogout = () => {

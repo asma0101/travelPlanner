@@ -60,7 +60,7 @@ const TripDetails =  (props: any) => {
 				dispatch(setLoader(false));
 			}
 			fetchData();
-		}, []);
+		}, [dispatch, tripId]);
 	} catch (e) {
 			dispatch(setErrorAlert(true, 'Something went wrong! Please try later'));
 

@@ -69,7 +69,7 @@ const RegisterTrip = () => {
 		fetchTripDetails();
 		getPickPoints();
 		
-	},[]);
+	},[dispatch,router, tripId]);
 
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
