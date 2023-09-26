@@ -15,6 +15,19 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+.w-500{
+  width: 500px;
+}
+.margin-top-10{
+  margin-top: 3rem;
+}
+.trip-details-bg-img {
+  background-image: url('/tripDetailsBg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.7; /* Adjust the opacity value (0.0 - 1.0) as needed */
+}
 
 body {
   /* color: rgb(var(--foreground-rgb));
@@ -24,4 +37,30 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: lightblue;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 99;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

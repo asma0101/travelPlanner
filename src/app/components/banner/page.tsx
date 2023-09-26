@@ -12,14 +12,12 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className="absolute inset-0 flex justify-center items-center">
-                    <div className="text-white">
-                    <h2 className="text-4xl font-bold mb-4">Explore Amazing Places</h2>
+                    <div className="text-gray">
+                    <h2 className="text-[2rem] font-bold mb-4">Explore Amazing Places</h2>
                     <p className="text-lg mb-8">
-                        Find your next adventure and create unforgettable memories.
+                            Find your next adventure and create unforgettable memories.
                     </p>
-                    <button className="bg-blue-500 text-white px-6 py-3 rounded-full text-xl font-semibold hover:bg-blue-600">
-                        Get Started
-                    </button>
+                    
                     </div>
                 </div>
             </div>
