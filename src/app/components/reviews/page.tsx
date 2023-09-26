@@ -1,11 +1,28 @@
+import { getReviews } from "@/app/shared/services";
+import { useEffect, useState } from "react";
+import Carousel from "../carousal/page";
+
 const Reviews = () => {
 
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            let response = await getReviews();
+            if (response) {
+                setReviews(response);
+            }
+        }
+        fetchReviews();
+    }, []);
     return (
         <>
             <div className="text-[1.5rem] font-bold max-w-screen-xl mx-auto bg-gray-800 text-white font-cursive">
                 <h1 >Hear what our customers say about TripMates...</h1>
             </div>
-           <div className="flex justify-center mb-2 max-w-screen-xl mx-auto mt-12 ">
+            <Carousel data={reviews}></Carousel>
+
+           {/* <div className="flex justify-center mb-2 max-w-screen-xl mx-auto mt-12 ">
                 <div className="max-w-xs mx-2 mb-4 bg-white rounded shadow-md border border-gray-300">
                     <div className="p-4 text-center">
                     <img src="/userIcon.png" alt="User Image" className="w-12 h-12 rounded-full mx-auto mb-2" />
@@ -40,7 +57,7 @@ const Reviews = () => {
 
                 
 
-            </div>
+            </div> */}
  
         </>      
     );

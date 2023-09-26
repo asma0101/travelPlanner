@@ -8,6 +8,7 @@ const API_ENDPOINTS = {
     REGISTER_TRIP: '/api/register',
     GET_ALL_PICK_POINTS: '/api/allPickpoints',
     GET_USER_TRIPS: '/api/getUserTrips',
+    GET_ALL_REVIEWS: '/api/getReviews'
 }
 
 export default API_ENDPOINTS;

@@ -32,6 +32,7 @@ export const isUserLoggedIn = () => {
 export const logoutUser = () => {
     localStorage.removeItem('userDetails');
     localStorage.removeItem('loggedIn');
+    localStorage.removeItem('token');
 }
 
 export const getHeaders = () => {

@@ -1,6 +1,7 @@
 import axios from "axios";
 import API_ENDPOINTS from "../common/constants";
 import { Trip, User } from "../common/interfaces";
+import { getHeaders } from "../common/utilitiesService";
 export const getTripDetails = async (id: number) => {
     try {
         let response = await axios.get(`${API_ENDPOINTS.GET_TRIP_DETAILS}/${id}`);
@@ -30,13 +31,17 @@ export const fetchPickPoints = async () => {
 }
 
 export const registerTrip = async (payload:any) => {
-    let response = await axios.post(API_ENDPOINTS.REGISTER_TRIP, payload );
+    let response = await axios.post(API_ENDPOINTS.REGISTER_TRIP, payload, {
+        headers: getHeaders()
+    } );
     return response;
 }
 
 export const getUserTrips = async (userId: Number) => {
     try {
-        let response = await axios.get(`${API_ENDPOINTS.GET_USER_TRIPS}?userId=${userId}`)
+        let response = await axios.get(`${API_ENDPOINTS.GET_USER_TRIPS}?userId=${userId}`, {
+            headers: getHeaders()
+        })
         if (response && response?.data.success) {
             return response.data.userPlans || null;
         }
@@ -45,6 +50,20 @@ export const getUserTrips = async (userId: Number) => {
         return error;
     }
 }
+
+export const getReviews = async () => {
+    try {
+        let response = await axios.get(API_ENDPOINTS.GET_ALL_REVIEWS);
+        if (response && response?.data.success) {
+            return response.data.reviews || null;
+        }
+        return null;
+    } catch (error) {
+        return error;
+        
+    }
+}
+
 export const initializeTrip = () => {
     let trip: Trip = {
 		id: 0,

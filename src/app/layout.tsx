@@ -21,6 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full bg-white">
+      <head>
+        <title>Trip Mates</title>
+      </head>
       <body className="h-full">
         <Provider store={store}>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
