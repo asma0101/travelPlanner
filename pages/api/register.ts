@@ -5,7 +5,8 @@ import validateToken from './middleware';
 const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const prisma = new PrismaClient();
-  validateToken(req, res, async () => {
+    try {
+       validateToken(req, res, async () => {
     if (req.method === 'POST') {
       const { tripDetails, userDetails } = req.body;
       try {
@@ -36,6 +37,11 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }      
     })
 
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }finally {
+    await prisma.$disconnect();
+  }
 }
 
 export default Handler;
