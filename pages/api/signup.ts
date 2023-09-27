@@ -5,8 +5,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const prisma = new PrismaClient();
-
-    if (req.method === 'POST') {
+    try {
+        if (req.method === 'POST') {
     const { name, email, password } = req.body;
 
     const existingUser = await prisma.users.findUnique({
@@ -33,6 +33,12 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   } else {
     return res.status(405).json({ message: 'Method not allowed', success: true  });
   }
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }finally {
+    await prisma.$disconnect();
+  }
+  
 }
 
 export default Handler;

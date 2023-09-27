@@ -4,7 +4,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const prisma = new PrismaClient();
     const id = req.query.id;
-    if (req.method === 'GET') {
+    try {
+        if (req.method === 'GET') {
         const plan = await prisma.plans.findUnique({
             where: { id: Number(id) },
             include: {
@@ -31,6 +32,12 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
         return res.status(200).json({ success: true, plan });
     }
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    } finally {
+    await prisma.$disconnect();
+  }
+    
 }
 
 export default Handler;

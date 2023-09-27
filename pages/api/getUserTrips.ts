@@ -5,6 +5,7 @@ import validateToken from './middleware';
 const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const prisma = new PrismaClient();
     const userId = Number(req.query.userId);
+    try {
     validateToken(req, res, async () => {
         if (req.method === 'GET') {
             const userPlans = await prisma.userPlans.findMany({
@@ -36,7 +37,13 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
             return res.status(200).json({ success: true, userPlans });
         }        
-    })
+    })        
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });  
+    }finally {
+    await prisma.$disconnect();
+  }
+
 
 }
 
