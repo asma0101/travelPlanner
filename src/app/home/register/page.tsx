@@ -39,11 +39,6 @@ const RegisterTrip = () => {
 
 	useEffect(() => {
 		const userData: any = localStorage.getItem('userDetails') || null;
-		if (!userData?.loggedIn) {
-			dispatch(setErrorAlert(true, 'To register, Please login first!'));
-			router.push('/auth?view=login');
-			return;
-		}
 		setLoggedInUserData(JSON.parse(userData));
 		const fetchTripDetails = async () => {
 			dispatch(setLoader(true));
