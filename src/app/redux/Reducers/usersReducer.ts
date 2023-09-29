@@ -10,6 +10,7 @@ const initialState = {
 };
 
 const usersReducer = (state = initialState, action: any) => {
+  console.log(action)
   switch (action.type) {
       case ACTIONS.SET_LOGGED_IN:
           return {

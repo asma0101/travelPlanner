@@ -64,6 +64,21 @@ export const getReviews = async () => {
     }
 }
 
+export const addReview = async (payload:any) => {
+    try {
+        let response = await axios.post(API_ENDPOINTS.ADD_REVIEW, payload,
+            {
+                headers: getHeaders()
+            })
+        if (response && response?.data.success) {
+            return response.data.review || null;
+        }
+        return null;
+    } catch (error) {
+        return error;
+    }
+}
+
 export const initializeTrip = () => {
     let trip: Trip = {
 		id: 0,

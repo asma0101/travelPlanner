@@ -16,6 +16,8 @@ const MyTrips = () => {
     let router = useRouter();
     const [userTrips, setUserTrips] = useState([]);
     let loader = useSelector((state: any) => state.users.loader.loader);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredTrips, setFilteredTrips] = useState([]);
     let dispatch = useDispatch();
     
     useEffect(() => {
@@ -27,6 +29,7 @@ const MyTrips = () => {
                 let response = await getUserTrips(userDetails.userId);
                 if (response) {
                     setUserTrips(response);
+                    setFilteredTrips(response);
                     dispatch(setLoader(false));
                 }
             } catch (error) {
@@ -37,6 +40,14 @@ const MyTrips = () => {
         };
         fetchUserTrips();
     }, [dispatch]);
+    useEffect(() => {
+        const filtered = userTrips.filter((userTrip:any) => {
+            const destination = `${userTrip.plan.destination.name} - ${userTrip.plan.destination.region}`;
+            return destination.toLowerCase().includes(searchTerm.toLowerCase());
+        });
+        setFilteredTrips(filtered);
+    }, [searchTerm, userTrips]);
+
     return (
         <>
             <div className="max-w-screen-lg mx-auto mt-24 overflow-y-auto">
@@ -50,16 +61,18 @@ const MyTrips = () => {
                                         <input
                                         type="text"
                                         className="border p-2 rounded-lg mr-2 w-100"
-                                        placeholder="Search trips..."
+                                                placeholder="Search trips..."
+                                                value={searchTerm}
+                                                onChange={(e) => setSearchTerm(e.target.value)}
                                             />
                                         <FontAwesomeIcon icon={faSearch} />
                                             
                                     </div>
                                     <div className="overflow-y-auto max-h-100">
                                         {
-                                            userTrips.map((userTrip:any) => {
+                                            filteredTrips.map((userTrip:any) => {
                                                 return <Trip
-                                                    key={userTrip.plan.id}
+                                                    key={userTrip.id}
                                                     id={userTrip.plan.id}
                                                     title={`${userTrip.plan.destination.name} - ${userTrip.plan.destination.region}`  }
                                                     startDate={new Date(userTrip.plan.startDate).toLocaleDateString()}

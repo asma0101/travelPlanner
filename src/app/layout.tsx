@@ -5,7 +5,6 @@ import Header from './components/header/page'
 import Footer from './components/footer/page'
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export default function RootLayout({
@@ -17,6 +16,7 @@ export default function RootLayout({
     <html lang="en" className="h-full bg-white">
       <head>
         <title>Trip Mates</title>
+        <link rel="icon" type="image/png" href="/logo.png"/>
       </head>
       <body className="h-full">
         <Provider store={store}>
