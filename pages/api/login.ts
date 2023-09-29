@@ -33,10 +33,8 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).json({ message: 'Method not allowed', success:false });
   }
     } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }finally {
-    await prisma.$disconnect();
-  }
+      res.status(500).json({ error: 'Internal Server Error' ,errorData: error});
+    }
   
 }
 
