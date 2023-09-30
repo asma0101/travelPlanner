@@ -90,7 +90,7 @@ const TripDetails =  (props: any) => {
 						</h1>
 								<div className=" ">
 									<p className="text-xl font-semibold">
-										<span className="font-bold text-2xl">Charges</span>: {tripDetails.totalCharges}
+										<span className="font-bold text-2xl">Charges</span>: Rs. {tripDetails.totalCharges}
 									</p>
 									<p className="text-xl font-semibold">
 										<span className="font-bold text-2xl">No. Of Days</span>: {totalDays}
