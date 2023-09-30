@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import authGuard from "../../components/authGaurd/page";
+import ErrorAlert from "@/app/components/alert/page";
 
 
 const MyTrips = () => {
@@ -18,6 +19,7 @@ const MyTrips = () => {
     let loader = useSelector((state: any) => state.users.loader.loader);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredTrips, setFilteredTrips] = useState([]);
+    const [showAlert, setShowAlert] = useState(false);
     let dispatch = useDispatch();
     
     useEffect(() => {
@@ -26,12 +28,16 @@ const MyTrips = () => {
             try {
                 let userDetails: any = localStorage.getItem('userDetails');
                 userDetails = JSON.parse(userDetails);
-                let response = await getUserTrips(userDetails.userId);
-                if (response) {
-                    setUserTrips(response);
-                    setFilteredTrips(response);
+                let data = await getUserTrips(userDetails.userId);
+                if (data && data.success) {
+                    setUserTrips(data.userPlans);
+                    setFilteredTrips(data.userPlans);
                     dispatch(setLoader(false));
+                } else {
+                    dispatch(setLoader(false));
+                    dispatch(setErrorAlert(true, 'Unable to fetch your trips! Please try later.'));                    
                 }
+                
             } catch (error) {
                 dispatch(setLoader(false));
 			    dispatch(setErrorAlert(true, 'Unable to fetch your trips! Please try later.'));
@@ -41,7 +47,7 @@ const MyTrips = () => {
         fetchUserTrips();
     }, [dispatch]);
     useEffect(() => {
-        const filtered = userTrips.filter((userTrip:any) => {
+        const filtered = userTrips && userTrips.filter((userTrip:any) => {
             const destination = `${userTrip.plan.destination.name} - ${userTrip.plan.destination.region}`;
             return destination.toLowerCase().includes(searchTerm.toLowerCase());
         });
@@ -50,12 +56,15 @@ const MyTrips = () => {
 
     return (
         <>
+            {
+                showAlert ? <ErrorAlert></ErrorAlert> : null
+            }
             <div className="max-w-screen-lg mx-auto mt-24 overflow-y-auto">
                 {
                     loader ? <Spinner></Spinner> :
                         <>
                             {
-                                userTrips.length > 0 ?
+                                filteredTrips.length > 0 ?
                                     <>
                                     <div className="flex  items-center mb-4 w-100">
                                         <input

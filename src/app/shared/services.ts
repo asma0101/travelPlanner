@@ -43,11 +43,11 @@ export const getUserTrips = async (userId: Number) => {
             headers: getHeaders()
         })
         if (response && response?.data.success) {
-            return response.data.userPlans || null;
+            return response.data || null;
         }
         return response;
     } catch (error) {
-        return error;
+        return error?.response || {success:false};
     }
 }
 
