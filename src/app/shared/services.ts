@@ -10,8 +10,7 @@ export const getTripDetails = async (id: number) => {
         }
         return response;
     } catch (error) {
-        return error;
-
+        return  {success:false};
     }
 
     return null;
@@ -25,7 +24,7 @@ export const fetchPickPoints = async () => {
         }
         return response;
     } catch (error) {
-        return error;
+        return  {success:false};
     }
     
 }
@@ -47,7 +46,7 @@ export const getUserTrips = async (userId: Number) => {
         }
         return response;
     } catch (error) {
-        return error?.response || {success:false};
+        return  {success:false};
     }
 }
 
@@ -59,7 +58,7 @@ export const getReviews = async () => {
         }
         return null;
     } catch (error) {
-        return error;
+        return  {success:false};
         
     }
 }
