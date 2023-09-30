@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+**Please find deployed app here** https://mytravelplanner.netlify.app/
 
-## Getting Started
+**Application Description:**
 
-First, run the development server:
+The **My Travel Planner** App mirrors tripMates, a travel agency specializing in Pakistan trips. This user-centric platform allows sign-ups, logins, viewing upcoming and past trips, trip registration, filtering options, and checking trip statuses. Users can also explore services, give feedback, and read others' reviews, enhancing the interactive travel experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Following **points covered in this project**:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Basic React** - Components, data sharing, Shared Components, redux setup, 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Styling and layout using Tailwind CSS**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Separate Layout** for whole app and one layout for auth/login screen
 
-## Learn More
+**HOC** => Used via authGaurds to protect frontend routes based on token
 
-To learn more about Next.js, take a look at the following resources:
+**App Routing and navigation** 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+==> Basic routing e.g /home, /home
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+==> Nested routing e.g /home/myTrips
 
-## Deploy on Vercel
+==> Dynamic routing, e.g. /home/myTrips/viewTrip/[_tripId]
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Fetching data from server** on multiple pages (e.g. Fetching services, user trips, reviews on /home page)
+and other APIs on multiple pages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**JWT token** for authentication
+
+**Loading State** while fetching data from API, or adding **Tailwind spinners** when making API calls
+
+**Error State** when user encounters any error, using error/success alerts
+
+**Prisma ORM** and **supabase** cloud provider
+
+**API routes** for performing multiple user side functions
+
+**Deployed over Netlify**
